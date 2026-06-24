@@ -1,0 +1,43 @@
+=== DATA CLEANING REPORT ===
+Initial shape of dataset: 8030 rows, 19 columns
+
+=== Data Types ===
+Property_ID: int64
+Area_Name: object
+BHK: int64
+Bathrooms: int64
+Balconies: float64
+Area_Size: object
+Property_Age: float64
+Gym: object
+Swimming_Pool: object
+Market: object
+School: object
+Hospital: object
+Park: object
+Mall: object
+Security: object
+Lift: object
+Parking: object
+Power_Backup: object
+Price: float64
+
+=== Missing Values Distribution ===
+Balconies: 401 missing (4.99%)
+Property_Age: 398 missing (4.96%)
+Gym: 240 missing (2.99%)
+Swimming_Pool: 320 missing (3.99%)
+Price: 162 missing (2.02%)
+
+=== Outlier Handling ===
+Decision: Capping outliers using the 1.5 * IQR rule to prevent extreme values from skewing the model.
+Area_Size: Capped 10 outliers.
+Price: Capped 16 outliers.
+Property_Age: Capped 425 outliers.
+
+=== Categorical Conversion ===
+Converted Yes/No to 1/0 for columns: Gym, Swimming_Pool, Market, School, Hospital, Park, Mall, Security, Lift, Parking, Power_Backup
+
+Verification: Total missing values remaining in dataset: 0
+Final shape of cleaned dataset: 8030 rows, 19 columns
+Cleaned dataset saved to: D:\Collage\Aishwarya (BCA)\House Price Prediction\scripts\../data/jodhpur_housing_cleaned.csv

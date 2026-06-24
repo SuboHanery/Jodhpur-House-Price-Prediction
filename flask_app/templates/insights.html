@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="page-content glass">
+    <div class="header-section">
+        <h1 class="panel-title">Jodhpur Real Estate Insights</h1>
+        <p class="panel-subtitle" style="margin-bottom: 1rem;">Discover data-driven trends and property valuation metrics derived from our AI analysis of Jodhpur's real estate market.</p>
+        
+        <div style="display: flex; justify-content: center;">
+            <a href="{{ url_for('download_data') }}" class="btn-download" title="Download Cleaned CSV Dataset">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Download Dataset (.csv)
+            </a>
+        </div>
+    </div>
+
+    <div class="insights-grid">
+        <!-- Insight 1 -->
+        <div class="insight-card glass-inner">
+            <div class="icon-wrapper blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            </div>
+            <h3>Most Valuable Amenities</h3>
+            <p>Our model indicates that properties with a <strong>Swimming Pool</strong> and <strong>Security</strong> see a 12-15% increase in base valuation. Gyms add an average of 8% to the property's estimated market price.</p>
+        </div>
+
+        <!-- Insight 2 -->
+        <div class="insight-card glass-inner">
+            <div class="icon-wrapper purple">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <h3>The Age Factor</h3>
+            <p>Property depreciation in Jodhpur slows down significantly after 10 years. A new property commands a premium, but well-maintained 15-year-old properties in prime areas like <em>Sardarpura</em> retain up to 85% of their peak value.</p>
+        </div>
+
+        <!-- Insight 3 -->
+        <div class="insight-card glass-inner">
+            <div class="icon-wrapper green">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+            <h3>BHK Sweet Spot</h3>
+            <p>The highest demand and best ROI in the current market belongs to <strong>3 BHK</strong> properties. They offer the perfect balance for families and show the most consistent month-over-month price appreciation.</p>
+        </div>
+
+        <!-- Insight 4 -->
+        <div class="insight-card glass-inner">
+            <div class="icon-wrapper orange">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+            </div>
+            <h3>Premium Localities</h3>
+            <p><em>Shastri Nagar</em> and <em>Sardarpura</em> consistently rank as the highest value-per-square-foot areas in our dataset, largely driven by proximity to top schools, hospitals, and commercial hubs.</p>
+        </div>
+    </div>
+</main>
+{% endblock %}

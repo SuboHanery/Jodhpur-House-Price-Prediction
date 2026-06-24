@@ -1,0 +1,30 @@
+=== MODEL PERFORMANCE REPORT ===
+
+--- Linear Regression ---
+MAE: 732496.74
+RMSE: 1179662.64
+R² Score: 0.9097
+MAPE: 4122.97%
+
+--- Decision Tree ---
+MAE: 853653.86
+RMSE: 1348026.61
+R² Score: 0.8821
+MAPE: 3663.95%
+
+--- Random Forest ---
+MAE: 610688.95
+RMSE: 972755.59
+R² Score: 0.9386
+MAPE: 3631.25%
+
+=== COMPARISON TABLE ===
+            Model           MAE         RMSE       R2        MAPE
+Linear Regression 732496.736535 1.179663e+06 0.909696 4122.967625
+    Decision Tree 853653.860523 1.348027e+06 0.882079 3663.951176
+    Random Forest 610688.951432 9.727556e+05 0.938596 3631.248926
+
+=== BEST MODEL ===
+Selected Model: Random Forest
+R² Score: 0.9386
+Best model copied to D:\Collage\Aishwarya (BCA)\House Price Prediction\scripts\../models\price_prediction_model.pkl

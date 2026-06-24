@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="page-content glass">
+    <div class="header-section">
+        <h1 class="panel-title">Project Development Pipeline</h1>
+        <p class="panel-subtitle">A step-by-step overview of the methodology and technologies used to build the Jodhpur AI Predictor from scratch.</p>
+    </div>
+
+    <!-- Timeline/Pipeline Layout -->
+    <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 900px; margin: 0 auto; position: relative;">
+        
+        <!-- Connecting Line -->
+        <div style="position: absolute; left: 32px; top: 30px; bottom: 30px; width: 2px; background: rgba(255,255,255,0.1); z-index: 0;"></div>
+
+        <!-- Step 1 -->
+        <div class="glass-inner" style="display: flex; gap: 1.5rem; position: relative; z-index: 1;">
+            <div class="icon-wrapper blue" style="flex-shrink: 0; box-shadow: 0 0 0 8px var(--glass-bg);">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+            </div>
+            <div>
+                <h3 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem;">Phase 1: Data Gathering & Cleaning</h3>
+                <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 0.5rem;">
+                    We began by collecting raw real estate listings from Jodhpur. The dataset underwent rigorous cleaning to remove outliers, handle missing values, and standardize formatting.
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <span class="badge">Dataset Size: 8,000 Properties</span>
+                    <span class="badge" style="color: #a78bfa; background: rgba(139, 92, 246, 0.1); border-color: rgba(139, 92, 246, 0.3);">Tech: Python, Pandas</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="glass-inner" style="display: flex; gap: 1.5rem; position: relative; z-index: 1;">
+            <div class="icon-wrapper purple" style="flex-shrink: 0; box-shadow: 0 0 0 8px var(--glass-bg);">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            </div>
+            <div>
+                <h3 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem;">Phase 2: Feature Engineering</h3>
+                <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 0.5rem;">
+                    Raw data isn't enough for an AI. We applied <strong>One-Hot Encoding</strong> to categorical locations (like Sardarpura vs Shastri Nagar) and used a <strong>StandardScaler</strong> to normalize numerical data (like area size) so the model could process it efficiently.
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <span class="badge">Input Features: 27 Variables</span>
+                    <span class="badge" style="color: #a78bfa; background: rgba(139, 92, 246, 0.1); border-color: rgba(139, 92, 246, 0.3);">Tech: Scikit-Learn, NumPy</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="glass-inner" style="display: flex; gap: 1.5rem; position: relative; z-index: 1;">
+            <div class="icon-wrapper orange" style="flex-shrink: 0; box-shadow: 0 0 0 8px var(--glass-bg);">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            </div>
+            <div>
+                <h3 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem;">Phase 3: Model Training</h3>
+                <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 0.5rem;">
+                    We tested multiple algorithms (Linear Regression, Decision Trees) before finalizing a <strong>Random Forest Regressor</strong>. The model was trained, tested for variance, and exported into a `.pkl` file for instant real-time predictions.
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <span class="badge">Accuracy Score: 93.2%</span>
+                    <span class="badge" style="color: #a78bfa; background: rgba(139, 92, 246, 0.1); border-color: rgba(139, 92, 246, 0.3);">Tech: Scikit-Learn, Pickle</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="glass-inner" style="display: flex; gap: 1.5rem; position: relative; z-index: 1;">
+            <div class="icon-wrapper green" style="flex-shrink: 0; box-shadow: 0 0 0 8px var(--glass-bg);">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            </div>
+            <div>
+                <h3 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem;">Phase 4: Web Deployment</h3>
+                <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 0.5rem;">
+                    To make the model accessible, we wrapped it in a secure REST API. We then designed a sleek, modern UI using a Glassmorphism aesthetic to allow end-users to input property details and receive immediate valuations without requiring programming knowledge.
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <span class="badge">Architecture: Full-Stack SPA</span>
+                    <span class="badge" style="color: #a78bfa; background: rgba(139, 92, 246, 0.1); border-color: rgba(139, 92, 246, 0.3);">Tech: Flask, HTML5, CSS3, JS</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+{% endblock %}

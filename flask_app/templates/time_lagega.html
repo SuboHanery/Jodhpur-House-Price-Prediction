@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhi Kar!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            background: var(--bg-dark);
+            padding: 2rem;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .chappal-img {
+            border-radius: 20px;
+            width: 280px;
+            max-width: 90%;
+            border: 4px solid var(--primary);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+            margin-bottom: 2rem;
+            background: rgba(255,255,255,0.8);
+            padding: 4px;
+            z-index: 10;
+        }
+        h1 {
+            font-size: 3.5rem;
+            color: var(--primary);
+            font-weight: 800;
+            z-index: 10;
+            margin: 0;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body class="{% if request.cookies.get('theme') != 'dark' %}light-mode{% endif %}">
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <img src="https://media1.tenor.com/m/pk5rbbAujJEAAAAC/sultan-running-with-chappal-to-hit-him-gangs-of-wasseypur.gif" alt="Running with Chappal" class="chappal-img">
+    <h1>ABHI KAR! 😠</h1>
+</body>
+</html>

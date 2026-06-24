@@ -1,0 +1,14 @@
+=== EXPLORATORY DATA ANALYSIS REPORT ===
+Total Properties Analyzed: 8030
+
+=== Top 10 Features Correlated with Price ===
+Security: 0.2894
+Bathrooms: 0.2519
+BHK: 0.2443
+Gym: 0.2241
+Lift: 0.2169
+Parking: 0.1939
+Mall: 0.1910
+Swimming_Pool: 0.1846
+Power_Backup: 0.1749
+Area_Size: 0.1207

@@ -1,0 +1,16 @@
+=== FEATURE ENGINEERING REPORT ===
+Initial shape: (8000, 18)
+One-hot encoded categorical columns: ['Area_Name']
+
+=== Multicollinearity Check ===
+No highly correlated features found (>0.9).
+
+=== Verification ===
+X shape: (8000, 51)
+y shape: (8000,)
+Missing values in X: 0
+Missing values in y: 0
+All features are numerical.
+
+Saved X_features to: D:\Collage\Aishwarya (BCA)\House Price Prediction\scripts\../data/X_features.csv
+Saved y_target to: D:\Collage\Aishwarya (BCA)\House Price Prediction\scripts\../data/y_target.csv

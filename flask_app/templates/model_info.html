@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="page-content glass">
+    <div class="header-section">
+        <h1 class="panel-title">AI Engine Architecture</h1>
+        <p class="panel-subtitle">Technical overview of the machine learning model powering our real estate predictions.</p>
+    </div>
+
+    <div class="model-layout">
+        <!-- Left: Explanation -->
+        <div class="model-info-text glass-inner">
+            <h3>Random Forest Regressor</h3>
+            <p>Our prediction engine is powered by a <strong>Random Forest Regressor</strong>. This algorithm works by building a "forest" of multiple decision trees during training. When you request a prediction, each tree in the forest makes its own estimate based on different subsets of data.</p>
+            
+            <p>The model then averages all these individual predictions together to produce the final estimated price. This "ensemble" approach prevents the AI from becoming too heavily biased by outlier data, ensuring a highly robust and accurate valuation for Jodhpur properties.</p>
+            
+            <h4 class="mt-4">Key Features Analyzed</h4>
+            <ul class="feature-list">
+                <li><span class="dot"></span> <strong>Location Encoding:</strong> One-hot encoding of 12 major Jodhpur localities.</li>
+                <li><span class="dot"></span> <strong>Structural Data:</strong> Area Size, BHK, Bathrooms, and Balconies.</li>
+                <li><span class="dot"></span> <strong>Quality of Life:</strong> 11 distinct premium amenities (Gym, Pool, Security, etc.).</li>
+                <li><span class="dot"></span> <strong>Depreciation:</strong> Property age factored dynamically.</li>
+            </ul>
+            
+            <div class="mt-4">
+                <a href="{{ url_for('download_model') }}" class="btn-download">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Download Model (.pkl)
+                </a>
+            </div>
+        </div>
+
+        <!-- Right: Metrics -->
+        <div class="model-metrics">
+            <div class="metric-card glass-inner">
+                <div class="metric-label">R² Score (Accuracy)</div>
+                <div class="metric-value text-gradient-1">93.2%</div>
+                <div class="metric-sub">Variance explained by the model</div>
+            </div>
+            
+            <div class="metric-card glass-inner">
+                <div class="metric-label">Algorithm</div>
+                <div class="metric-value">Random Forest</div>
+                <div class="metric-sub">Scikit-Learn Ensemble</div>
+            </div>
+            
+            <div class="metric-card glass-inner">
+                <div class="metric-label">Input Features</div>
+                <div class="metric-value">27</div>
+                <div class="metric-sub">Processed through StandardScaler</div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
