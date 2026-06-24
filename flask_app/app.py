@@ -26,11 +26,15 @@ try:
     with open(FEATURES_PATH, 'r') as f:
         feature_names = json.load(f)
     print("[SUCCESS] Model loaded successfully!")
+    model_error = None
 except Exception as e:
+    import traceback
     print(f"[ERROR] Error loading model: {e}")
+    traceback.print_exc()
     model = None
     scaler = None
     feature_names = None
+    model_error = str(e)
 
 # Define constants
 AREAS = ['Bhagat Ki Kothi', 'Magra Punjla', 'Basni', 'Chopasni Housing Board', 
@@ -124,6 +128,10 @@ def api_predict():
         if not all(k in data for k in ['bhk', 'area_size']):
             return jsonify({'error': 'Missing required fields'}), 400
         
+        # Validate model loaded
+        if model is None or feature_names is None:
+            return jsonify({'error': f"Model failed to load on server. Error: {model_error}"}), 500
+            
         # Process prediction
         predicted_price = make_prediction(create_input_array(
             bhk=data.get('bhk'),
