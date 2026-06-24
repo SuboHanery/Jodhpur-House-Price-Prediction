@@ -12,10 +12,11 @@ warnings.filterwarnings('ignore')
 app = Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # Max file size
 
-# Load model, scaler, and feature names
-MODEL_PATH = '../models/price_prediction_model.pkl'
-SCALER_PATH = '../models/scaler.pkl'
-FEATURES_PATH = '../models/feature_names.json'
+# Load model, scaler, and feature names using absolute paths
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, '..', 'models', 'price_prediction_model.pkl')
+SCALER_PATH = os.path.join(BASE_DIR, '..', 'models', 'scaler.pkl')
+FEATURES_PATH = os.path.join(BASE_DIR, '..', 'models', 'feature_names.json')
 
 try:
     with open(MODEL_PATH, 'rb') as f:
