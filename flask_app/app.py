@@ -8,8 +8,9 @@ from datetime import datetime
 
 warnings.filterwarnings('ignore')
 
-# Initialize Flask app
-app = Flask(__name__)
+# Initialize Flask App (Serving static files from templates folder)
+app = Flask(__name__, static_folder='templates', static_url_path='/static')
+CORS(app)
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # Max file size
 
 # Load model, scaler, and feature names using absolute paths

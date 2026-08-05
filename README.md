@@ -1,147 +1,59 @@
-# Jodhpur House Price Prediction
+# Jodhpur House Price Prediction System 🏠
+An AI-powered web application for predicting real estate prices in Jodhpur, Rajasthan, using Machine Learning.
 
-## Overview
-A machine learning project to predict residential property prices in Jodhpur using Linear Regression, Decision Tree, and Random Forest algorithms. The model is deployed as a web application using Flask.
+## 📁 Project Structure
 
-## Dataset
-- **Source:** jodhpur_housing_dirty.csv
-- **Records:** [Your number] properties
-- **Features:** [Your number] features including property details, amenities, and distances
-- **Target:** Price (in INR)
+The project has been aggressively simplified for clean presentation and easy understanding.
 
-## Technologies Used
-- **Data Processing:** Pandas, NumPy
-- **Visualization:** Matplotlib, Seaborn
-- **Machine Learning:** Scikit-learn
-- **Web Framework:** Flask
-- **Frontend:** HTML, CSS
-- **Model Storage:** Joblib
-
-## Project Phases
-
-### 1. Data Exploration & Cleaning
-- Loaded and analyzed dataset
-- Handled missing values using median imputation
-- Removed/capped outliers using IQR method
-- Converted categorical variables
-
-### 2. Exploratory Data Analysis
-- Created 15+ visualizations
-- Identified feature correlations
-- Found top features: [List your top 5]
-
-### 3. Feature Engineering
-- One-hot encoded categorical variables
-- Scaled numerical features using StandardScaler
-- Created new features: [List if any]
-
-### 4. Model Development
-Trained three models and compared performance:
-
-| Model | R² Score | RMSE | MAE |
-|-------|----------|------|-----|
-| Linear Regression | 0.XX | ₹XXX | ₹XXX |
-| Decision Tree | 0.XX | ₹XXX | ₹XXX |
-| Random Forest | 0.XX | ₹XXX | ₹XXX |
-
-**Best Model:** Random Forest (R² = 0.XX)
-
-### 5. Deployment
-- Built Flask web application
-- Created interactive prediction form
-- Deployed locally on localhost:5000
-
-## Installation & Usage
-
-### Prerequisites
-- Python 3.8+
-- pip
-
-### Setup
-```bash
-# Clone/download the project
-# Navigate to project directory
-cd house_price_prediction_project
-
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
+```text
+?   README.md (This file)
+?   PRD.md (Detailed Product Requirements Document)
+?   requirements.txt (Dependencies for Python)
+?   wsgi.py (Server entry point)
+?   
++---data/ (Raw and Cleaned datasets)
+?       jodhpur_housing_dirty.csv
+?       jodhpur_housing_cleaned.csv
+?       1_Data_Cleaning_and_EDA.ipynb (All data preprocessing code)
+?       
++---models/ (Trained AI files)
+?       price_prediction_model.pkl (The main AI brain)
+?       scaler.pkl (Math scaler)
+?       feature_names.json (Required inputs order)
+?       2_Model_Training.ipynb (All model training code)
+?       
++---flask_app/ (The Web Application)
+?   ?   app.py (The backend server script)
+?   +---templates/ (All Web Code: HTML, CSS, JS)
+?           base.html
+?           index.html
+?           insights.html
+?           about.html
+?           model_info.html
+?           pipeline.html
+?           time_lagega.html
+?           style.css
+?           script.js
 ```
 
-### Running the Application
-```bash
-# Navigate to flask_app directory
-cd flask_app
+## 🚀 How to Run Locally
 
-# Run Flask application
-python app.py
+1. **Install Dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. **Start the Web Server:**
+   ```bash
+   python wsgi.py
+   ```
+3. **Open in Browser:** 
+   Navigate to `http://localhost:5000`
 
-# Open browser and visit
-http://localhost:5000
-```
+## 📊 How the AI is Built
 
-## Using the Predictor
-1. Fill in property details in the form
-2. Select amenities and distances
-3. Click "Predict Price"
-4. View estimated price in rupees
+If you want to understand how the AI model was trained:
+1. Open the **`data/`** folder and view `1_Data_Cleaning_and_EDA.ipynb` to see how the raw Excel data was cleaned.
+2. Open the **`models/`** folder and view `2_Model_Training.ipynb` to see how the Random Forest AI algorithm was trained on the cleaned data to create the `.pkl` files.
 
-## Project Structure
-```
-house_price_prediction_project/
-├── data/
-├── notebooks/
-├── models/
-├── flask_app/
-├── visualizations/
-├── reports/
-├── scripts/
-├── README.md
-└── requirements.txt
-```
-
-## Key Findings
-- Area Size is the strongest predictor of price
-- BHK count significantly impacts price
-- Location (distances to key amenities) matters
-- Properties in [Area Name] are most expensive
-- Furnishing status affects price by ~[X]%
-
-## Model Performance
-- **Training R² Score:** 0.XX
-- **Testing R² Score:** 0.XX
-- **RMSE on Test Set:** ₹XX,XXX
-- **Mean Absolute Error:** ₹XX,XXX
-- **Mean Absolute Percentage Error:** X.XX%
-
-## Limitations & Future Improvements
-1. Limited to Jodhpur properties
-2. Dataset size: [Number] properties
-3. Could benefit from:
-   - More recent data
-   - Additional features (property images, reviews)
-   - Ensemble methods (XGBoost, LightGBM)
-   - Confidence intervals for predictions
-
-## Deployment
-To deploy on production:
-```bash
-# Using Gunicorn
-gunicorn -w 4 -b 0.0.0.0:8000 app:app
-
-# Using Heroku
-heroku create your-app-name
-git push heroku main
-```
-
-## Author
-[Your Name]
-
-## License
-This project is open source and available under the MIT License.
-
-## Contact
-For questions or suggestions, reach out via [Your Email]
+## 🌍 Cloud Deployment
+This project is production-ready. The `requirements.txt` strictly enforces `numpy>=2.0` and `scikit-learn>=1.5` to ensure cloud unpickling compatibility on services like Render.
