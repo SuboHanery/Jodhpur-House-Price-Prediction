@@ -1,118 +1,38 @@
-# Comprehensive Product Requirements Document (PRD)
-**Project Name:** Jodhpur House Price Prediction System
-**Version:** 2.0 (Detailed Specification)
-**Date:** June 2026
+# Project Requirements Document
+**Project:** Jodhpur House Price Prediction Website
+**Student Project Version**
 
 ---
 
-## 1. Executive Summary
-The **Jodhpur House Price Prediction System** is a sophisticated, machine learning-driven web application tailored for the real estate market in Jodhpur, Rajasthan. It empowers prospective homebuyers, property sellers, and real estate professionals by providing an instantaneous, highly accurate estimated market value for properties based on user-defined parameters. The system bridges the gap between complex AI modeling and everyday user accessibility through a premium, highly responsive user interface.
+## 1. What is this project?
+This is a web application built to predict house prices in Jodhpur, Rajasthan using Machine Learning. The idea is to take inputs like the size of the house, location, and amenities, and use historical data to guess a fair market price. I built this to make it easier for people to check property rates without just relying on brokers.
 
-## 2. Problem Statement
-The Jodhpur real estate market relies heavily on human estimation, brokers, and word-of-mouth, which can often be biased or inaccurate. Buyers fear overpaying, and sellers struggle to set competitive listing prices. There is currently a lack of a centralized, data-driven, and publicly accessible digital tool specifically trained on Jodhpur's local housing data to provide instant, unbiased property valuations.
+## 2. Why did I build this?
+Usually, people in Jodhpur rely on word-of-mouth or brokers to find out how much a house should cost, which can sometimes be misleading. I wanted to create a simple, data-driven tool that gives an instant, unbiased estimated price based on real numbers. 
 
-## 3. Solution Overview
-We provide an intuitive web application where users can input physical attributes of a property (e.g., location, size, amenities). Upon submission, a trained Machine Learning model (Random Forest Regressor) processes these inputs against historical market data to instantly calculate and return an estimated price, a price range, and a price-per-square-foot breakdown. 
+## 3. Who is this for?
+1. **Homebuyers:** People who want to double-check if they are getting a fair deal on a house.
+2. **Sellers:** Property owners who need a rough idea of what to list their house for.
+3. **Students/Reviewers:** Anyone checking out this college project to see how the Machine Learning model was trained and deployed.
 
-## 4. Target Audience & User Personas
-1. **The Prospective Buyer (Rahul):** Looking for a 3 BHK in Shastri Nagar. Wants to quickly verify if the price quoted by a broker is fair. Values accuracy and ease of use.
-2. **The Property Seller (Anjali):** Wants to list her old family home. Needs a realistic baseline price so her property doesn't sit on the market for too long.
-3. **The Real Estate Agent (Vikram):** Needs a fast, mobile-accessible tool to generate rapid estimates for clients while doing property viewings.
+## 4. Main Features
+* **Prediction Form:** A simple UI where you enter details like Area Name, BHK, Bathrooms, Balconies, Age, Size, and check off amenities (Gym, Park, Security, etc.).
+* **Instant ML Prediction:** The backend uses a Random Forest Machine Learning model to calculate the price instantly.
+* **Data Insights Page:** Shows some basic charts (like price distribution) so users can see the data behind the model.
+* **Mobile Easter Egg:** Since I designed the UI mainly for desktop browsers, anyone visiting on a phone will get a funny popup telling them to switch to a laptop.
 
-## 5. Scope of Work
-### 5.1. In-Scope
-* Development of the predictive machine learning model using a dataset of 8,000 cleaned property records.
-* Web-based user interface featuring form validation, dynamic price generation, and data visualization.
-* Educational pages detailing the "Model Architecture" and "Data Insights".
-* Cloud deployment ensuring 24/7 public accessibility.
+## 5. Technology Stack (What I used)
+* **Frontend:** HTML, standard CSS, and vanilla JavaScript. (I used a "Glassmorphism" transparent design style).
+* **Backend:** Python and Flask.
+* **Machine Learning:** Pandas (for data cleaning), NumPy, Scikit-Learn (for training the Random Forest algorithm).
+* **Deployment:** Hosted live on Render, with all code managed on GitHub.
 
-### 5.2. Out-of-Scope (For Current Release)
-* User account creation and login systems.
-* Direct integration with live broker MLS (Multiple Listing Service) databases.
-* Handling of commercial real estate (strictly limited to residential properties).
+## 6. How the Data Works
+* **The Dataset:** I used a dataset of Jodhpur property listings. 
+* **Data Cleaning:** I wrote a Jupyter Notebook to drop useless columns, fill in missing values (using median for numbers and mode for text), and cap extreme outliers so the model doesn't get confused.
+* **Training:** I tested Linear Regression, Decision Trees, and Random Forest. Random Forest gave the best accuracy, so I saved it as a `.pkl` file to use in the live website.
 
----
-
-## 6. Functional Requirements
-### 6.1. Core Prediction Engine
-* **REQ-1:** The system must accept inputs for `Area Name` (12 supported locations), `BHK` (1 to 6+), `Bathrooms` (1-5+), `Balconies` (0-3+), `Property Age` (0-50 years), `Area Size` (sq ft), and 6 distinct `Premium Amenities`.
-* **REQ-2:** The frontend must enforce validation (e.g., Area Size must be > 0 and formatted as a number).
-* **REQ-3:** Upon submission, the frontend must display a "Loading" state to signify server processing.
-* **REQ-4:** The backend API (`/api/predict`) must process the JSON payload, map it to the exact 1-dimensional array required by the model, scale the inputs, and return the prediction.
-* **REQ-5:** The prediction must be formatted in standard Indian numbering format (e.g., ₹1.5 Cr, ₹85 Lakhs).
-
-### 6.2. UI/UX & Presentation
-* **REQ-6:** The UI must adhere to a "Glassmorphism" aesthetic, featuring frosted glass panels, glowing background orbs, and distinct Dark/Light modes driven by CSS variables.
-* **REQ-7:** The application must intercept mobile users with an intentionally humorous "Easter Egg" overlay demanding they use a desktop, clicking a button redirects them to a specialized GIF page (`/time_lagega`).
-* **REQ-8:** The final predicted number must physically animate (count up) from 0 to the target value over 1.2 seconds.
-
-### 6.3. Data Insights & Transparency
-* **REQ-9:** The system must provide a dedicated `/insights` page featuring pre-generated EDA (Exploratory Data Analysis) charts (Correlation matrices, distribution plots).
-* **REQ-10:** The system must provide a `/model_info` page explaining the Random Forest algorithm to academic reviewers.
-
----
-
-## 7. Non-Functional Requirements
-### 7.1. Performance & Speed
-* The prediction API must respond in under 800 milliseconds.
-* The frontend must achieve a Google Lighthouse score of 90+ for performance.
-
-### 7.2. Reliability & Availability
-* The system is deployed on Render, targeting 99.9% uptime.
-* If the ML model fails to load in memory on the server, the API must elegantly fail and return a descriptive `500 Internal Server Error` message to the UI instead of crashing the application.
-
-### 7.3. Compatibility
-* Optimized for modern desktop browsers (Chrome, Edge, Safari, Firefox). Mobile users are purposefully restricted as part of the project's presentation design.
-
----
-
-## 8. Technical Architecture
-### 8.1. Frontend Layer
-* **HTML5:** Semantic structuring of 5 distinct pages.
-* **CSS3:** Heavy use of Flexbox/Grid, CSS variables for theming, `backdrop-filter` for glassmorphism, and media queries for the mobile overlay.
-* **JavaScript (Vanilla):** Asynchronous `fetch` calls to the Flask API, DOM manipulation, and request payload structuring.
-
-### 8.2. Backend Layer
-* **Framework:** Flask (Python 3.10+).
-* **API Endpoints:** 
-  * `POST /api/predict`: Handles ML inference.
-  * `GET /api/download-model`: Serves the `.pkl` file.
-  * `GET /api/download-data`: Serves the `.csv` file.
-
-### 8.3. Machine Learning Layer
-* **Model:** Scikit-Learn `RandomForestRegressor`.
-* **Preprocessing:** `StandardScaler` applied to numeric data. One-hot encoding utilized for categorical areas.
-* **Artifacts:** `price_prediction_model.pkl` (51MB), `scaler.pkl`, `feature_names.json`.
-
----
-
-## 9. Data Pipeline & Management
-* **Data Source:** Raw CSV data containing Jodhpur property listings.
-* **Cleaning Protocol:** Removal of outliers (e.g., properties < 200 sq ft), handling missing values via median imputation, limiting properties to 8,000 core reliable records.
-* **Serialization:** The trained model and scaler are serialized via `pickle` and loaded into RAM when the Flask server initializes via `wsgi.py`.
-
----
-
-## 10. Deployment Strategy
-* **Source Control:** GitHub repository (`Jodhpur-House-Price-Prediction`).
-* **PaaS Provider:** Render (Free Tier).
-* **Environment Configuration:** 
-  * `requirements.txt` strictly pins dependencies (`numpy>=2.0.0`, `scikit-learn>=1.5.0`, `pandas>=2.2.0`) to prevent pip resolver downgrades and pickling errors.
-  * Start Command: `gunicorn wsgi:app`
-
----
-
-## 11. Risks & Mitigation
-* **Risk 1: Pickling Incompatibilities.** Cloud server resolving to a different Numpy version than the training environment.
-  * *Mitigation:* Aggressive dependency pinning in `requirements.txt` to strictly enforce Numpy 2.x and Scikit-Learn 1.5.x.
-* **Risk 2: File Path Resolution.** Gunicorn launching from different root directories causing model load failures.
-  * *Mitigation:* Implementation of strict absolute path resolution (`os.path.abspath(__file__)`) in `app.py`.
-* **Risk 3: Model Size Limits.** GitHub blocking the 51MB `.pkl` file.
-  * *Mitigation:* The file sits just below the hard 100MB cutoff, bypassing Git LFS requirements.
-
----
-
-## 12. Future Roadmap (Phase 2)
-1. **Dynamic Model Retraining:** Building an admin portal where new CSV data can be uploaded, automatically retraining the `.pkl` file and hot-reloading the Flask server.
-2. **Interactive Map UI:** Integrating Mapbox or Google Maps API to allow users to click a location rather than using the `Area Name` dropdown.
-3. **Database Integration:** Moving from a static model to a PostgreSQL database to store user queries and build a history of searched valuations.
+## 7. Future Ideas
+If I had more time to work on this, I would add:
+* A real map where users can drop a pin instead of picking a location from a dropdown menu.
+* A database so users can create accounts and save their predictions to look at later.

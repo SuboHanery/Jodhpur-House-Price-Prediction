@@ -1,30 +1,30 @@
-# Jodhpur House Price Prediction System 🏠
-An AI-powered web application for predicting real estate prices in Jodhpur, Rajasthan, using Machine Learning.
+# Jodhpur House Price Prediction 🏠
+This is my college project for predicting real estate prices in Jodhpur, Rajasthan, using Machine Learning.
 
 ## 📁 Project Structure
 
-The project has been aggressively simplified for clean presentation and easy understanding.
+I tried to keep the folder structure as clean and simple as possible so it's easy to evaluate and understand.
 
 ```text
 ?   README.md (This file)
-?   PRD.md (Detailed Product Requirements Document)
-?   requirements.txt (Dependencies for Python)
-?   wsgi.py (Server entry point)
+?   PRD.md (Product Requirements Document for the project)
+?   requirements.txt (List of python libraries needed)
+?   wsgi.py (File to run the server online)
 ?   
-+---data/ (Raw and Cleaned datasets)
++---data/ (Datasets)
 ?       jodhpur_housing_dirty.csv
 ?       jodhpur_housing_cleaned.csv
-?       1_Data_Cleaning_and_EDA.ipynb (All data preprocessing code)
+?       1_Data_Cleaning_and_EDA.ipynb (Notebook where I cleaned the data)
 ?       
-+---models/ (Trained AI files)
-?       price_prediction_model.pkl (The main AI brain)
-?       scaler.pkl (Math scaler)
-?       feature_names.json (Required inputs order)
-?       2_Model_Training.ipynb (All model training code)
++---models/ (Trained ML files)
+?       price_prediction_model.pkl (The final trained model)
+?       scaler.pkl (Used for scaling inputs)
+?       feature_names.json (List of columns used)
+?       2_Model_Training.ipynb (Notebook where I trained and tested the models)
 ?       
-+---flask_app/ (The Web Application)
-?   ?   app.py (The backend server script)
-?   +---templates/ (All Web Code: HTML, CSS, JS)
++---flask_app/ (The Website Code)
+?   ?   app.py (The main backend server file)
+?   +---templates/ (HTML, CSS, and JS files)
 ?           base.html
 ?           index.html
 ?           insights.html
@@ -36,24 +36,24 @@ The project has been aggressively simplified for clean presentation and easy und
 ?           script.js
 ```
 
-## 🚀 How to Run Locally
+## 🚀 How to Run it Locally
 
-1. **Install Dependencies:**
+1. **Install the libraries:**
    ```bash
    pip install -r requirements.txt
    ```
-2. **Start the Web Server:**
+2. **Start the server:**
    ```bash
    python wsgi.py
    ```
 3. **Open in Browser:** 
-   Navigate to `http://localhost:5000`
+   Go to `http://localhost:5000`
 
-## 📊 How the AI is Built
+## 📊 How I Built the ML Model
 
-If you want to understand how the AI model was trained:
-1. Open the **`data/`** folder and view `1_Data_Cleaning_and_EDA.ipynb` to see how the raw Excel data was cleaned.
-2. Open the **`models/`** folder and view `2_Model_Training.ipynb` to see how the Random Forest AI algorithm was trained on the cleaned data to create the `.pkl` files.
+If you want to see the actual machine learning work:
+1. Open the **`data/`** folder and check out `1_Data_Cleaning_and_EDA.ipynb`. This is where I handled missing values, removed outliers, and did data visualization.
+2. Open the **`models/`** folder and check out `2_Model_Training.ipynb`. This is where I tested different algorithms (Linear Regression, Decision Tree, Random Forest) and picked the best one.
 
-## 🌍 Cloud Deployment
-This project is production-ready. The `requirements.txt` strictly enforces `numpy>=2.0` and `scikit-learn>=1.5` to ensure cloud unpickling compatibility on services like Render.
+## 🌍 Deployment
+I deployed this project live on Render. The `requirements.txt` file is set up with specific library versions so the cloud server doesn't crash when unpickling the model.
