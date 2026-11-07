@@ -27,6 +27,11 @@
         <a href="{{ url_for('time_lagega') }}" style="display: inline-block; margin-top: auto; padding: 0.8rem 2rem; background: var(--primary); color: var(--bg-dark); text-decoration: none; font-weight: 800; border-radius: 12px; font-size: 1.2rem; box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4); text-transform: uppercase;">Time lagega</a>
     </div>
 
+    <!-- INSTANT PAGE LOADER -->
+    <div id="page-loader" class="page-loader">
+        <div class="loader-spinner"></div>
+    </div>
+
     <div class="bg-glow bg-glow-1"></div>
     <div class="bg-glow bg-glow-2"></div>
     
@@ -83,6 +88,37 @@
                 // Sun icon for switching to light
                 themeToggle.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
             }
+        });
+
+        // Instant Page Transition Logic
+        document.addEventListener("DOMContentLoaded", () => {
+            const loader = document.getElementById('page-loader');
+            
+            // Fade out loader when page is fully loaded
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 300);
+            }, 100);
+
+            // Show loader instantly when clicking a nav link
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if(href && !href.startsWith('#') && link.target !== '_blank') {
+                        e.preventDefault();
+                        loader.style.display = 'flex';
+                        // Force reflow
+                        void loader.offsetWidth;
+                        loader.style.opacity = '1';
+                        
+                        // Navigate after a tiny delay to ensure animation starts
+                        setTimeout(() => {
+                            window.location.href = href;
+                        }, 150);
+                    }
+                });
+            });
         });
     </script>
 </body>
